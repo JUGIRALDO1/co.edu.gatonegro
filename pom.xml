@@ -32,6 +32,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -40,7 +45,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -58,7 +62,7 @@
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>3.0.1</version>
 				<configuration>
-					<appName>sampleDevOpsJuanRamirez</appName>
+					<appName>gatonegrovigaju</appName>
 					<includeTarget>false</includeTarget>
 					<includes>
 						<include>${project.build.directory}/${project.build.finalName}.jar</include>
