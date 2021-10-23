@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Gabo",
+    "phone": "123",
+    "address": "Avenida siempre viva"
+  },
+  {
+    "id": 2,
+    "name": "Vivi",
+    "phone": "456",
+    "address": "Medellin"
+  },
+  {
+    "id": 3,
+    "name": "JuanPa",
+    "phone": "789",
+    "address": "Quindio"
+  }
+]
