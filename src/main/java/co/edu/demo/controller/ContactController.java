@@ -25,13 +25,13 @@ public class ContactController {
     }
 
     //PUT
-    @PutMapping("/contact/{id}")
-    public ResponseEntity<ContactDTO> UpdarteContact(@RequestParam Integer id, @RequestBody ContactDTO contact){
+    @PutMapping("/contact")
+    public ResponseEntity<ContactDTO> UpdateContact(@RequestParam Integer id, @RequestBody ContactDTO contact){
         return new ResponseEntity<>(contactService.UpdateContact(id, contact), HttpStatus.OK);
     }
 
     //DELETE
-    @DeleteMapping("/contact/{id}")
+    @DeleteMapping("/contact")
     public ResponseEntity<String> DeleteContact(@RequestParam Integer id){
         return new ResponseEntity<>(contactService.DeleteContact(id), HttpStatus.OK);
     }
