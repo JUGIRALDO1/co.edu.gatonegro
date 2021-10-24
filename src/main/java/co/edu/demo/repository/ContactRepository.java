@@ -57,7 +57,7 @@ public class ContactRepository implements IContactRepository{
                 findFirst().orElseThrow(()-> new RuntimeException());
         contacts.remove(oldContact);
         contacts.add(contact);
-        return null;
+        return contact;
     }
 
     @Override
@@ -66,6 +66,6 @@ public class ContactRepository implements IContactRepository{
                 filter( c -> c.getId().equals(id)).
                 findFirst().orElseThrow(()-> new RuntimeException());
         contacts.remove(contact);
-        return null;
+        return "Deleted";
     }
 }
