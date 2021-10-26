@@ -1,11 +1,16 @@
 language: java
+services:
+  - docker
 before_install:
 - chmod +x mvnw
-
+#- mvn clean install
+- docker build -t gato-negro .
+- docker images
+#- docker run --name gato-negro -p 8080:8080 gato-negro:latest
 addons:
     sonarcloud:
         organization: "d3c184f43c8a925376c733917659019ca8e96c49"
         token:
             secure: csjS3xsSxul3I6yNwjqDD4iL9sjFYMHY3WFRPUYzI6unF5CZmu02OlRRUcLDeY9COYwaVAka6Gt0mh8bg1jP81OFkTqXAioVypHHOqeO5ED9ZbbbhbfGVGAKSdDFMRYum9Oe2jA8SgYEWVSks2LFj6ECf3uayBGDeZBVLy/14WlsTqrFVzrzAoh5uuoz8Yxk0BDuQffJ+v9nu2Y01VC+3mGPg5+2ll524AQky1hRdX8nUiybJurd9GaQgG+PWFR+Qj/PfK9ySZFEoxaFmPbE8cWNM2WIsV+MRImRAKf4RNkmbkF2H9vhjV9KyS1Y2bcYtHJLLMA8rP5mQoK2Qba3TdvHRiVYQCehmk7XrRbi2ZN12SuHWxiqyuUHUrWGKu+h22VFPPzBY+9PHw9oQ923m6rJHTwLoS0Km5bfoSFkMUvtmUuzJePtbWlQkncvg4oM9ujUNXlztBi9tFZJV8UBTV/m4HRdezW0GyMLuOPKWezI1eyTgzyybFD6mj+E+vwaqi8vnwRSIoEEzzhpSBh11r79C8UnWrBiQHzvWxK9rOFI3T1IY6+4Gn0tmPxxXKvRq2X19J/xwpgU2TewBq2A3xxgQxQyIKYCWP5ZXFtxpyVstwYHZ15G5NNbXYDozZ+9EP9v30FucN6mBxbvwB3BXnszqbwtwaKbu2sRsOd9dwQ=
-script:
-    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#script:
+#   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
