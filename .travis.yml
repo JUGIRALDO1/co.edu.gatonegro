@@ -3,6 +3,7 @@ services:
   - docker
 before_install:
 - chmod +x mvnw
+- mvn clean install
 - docker build -t gato-negro .
 - docker images
 - docker run --name gato-negro -p 8080:8080 gato-negro:latest
