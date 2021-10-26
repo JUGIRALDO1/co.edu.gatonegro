@@ -13,11 +13,6 @@ public class ContactController {
 
     private final IContactService contactService;
 
-    @GetMapping("/status")
-    public ResponseEntity<ContactDTO> getStatus() {
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     // GET
     @GetMapping("/contact")
     public ResponseEntity<ContactDTO> getContact(@RequestParam Integer id) {
