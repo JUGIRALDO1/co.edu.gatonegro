@@ -9,19 +9,20 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class WeatherService {
     private static final Logger log = LoggerFactory.getLogger(WeatherService.class);
-    private final static String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
-    private final static String API_KEY = "849bf97ee34f7e61248ab185104b7e6b";
+    private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather";
+    private static final String API_KEY = "849bf97ee34f7e61248ab185104b7e6b";
+    private static final String UNIT = "metric";    
 
     public Weather getWeatherBy(String zip, String country) {
         RestTemplate restTemplate = new RestTemplate();
-        String urlRestWS = String.format("%s?zip=%s,%s&APPID=%s",
+        String urlRestWS = String.format("%s?zip=%s,%s&units=%s&APPID=%s", 
                 WEATHER_URL,
                 zip,
                 country,
+                UNIT,
                 API_KEY);
-        Weather weatherRoot = restTemplate.getForObject(urlRestWS, Weather.class);
+        Weather weatherRoot = restTemplate.getForObject(urlRestWS, Weather.class);        
         log.info(weatherRoot.toString());
-
         return weatherRoot;
     }
 }
