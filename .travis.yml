@@ -1,7 +1,11 @@
 language: java
+services:
+  - docker
 before_install:
 - chmod +x mvnw
-
+- docker build -t gato-negro .
+- docker images
+- docker run --name gato-negro -p 8080:8080 gato-negro:latest
 addons:
     sonarcloud:
         organization: "d3c184f43c8a925376c733917659019ca8e96c49"
