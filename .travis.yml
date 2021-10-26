@@ -5,7 +5,7 @@ before_install:
 - chmod +x mvnw
 - docker build -t gato-negro .
 - docker images
-- docker run --name gato-negro -p 443:443 gato-negro:latest
+- docker run --name gato-negro -p 8080:8080 gato-negro:latest
 
 addons:
     sonarcloud:
