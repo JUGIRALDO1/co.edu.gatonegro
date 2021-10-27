@@ -16,9 +16,10 @@ addons:
 include:
   - stage: build docker image
     script:
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker build -t gato-negro -f dockerfile.dev .
+   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker build -t $DOCKER_USERNAME/gato-negro -f Dockerfile.p1 .
     - docker images
+    - docker build -t $DOCKER_USERNAME/gato-negro -f Dockerfile .
     - docker tag gato-negro $DOCKER_USERNAME/gato-negro
     - docker push "$DOCKER_USERNAME/$HEROKU_APP_NAME
     - heroku container:push web --app $HEROKU_APP_NAME
