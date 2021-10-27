@@ -20,10 +20,10 @@ job:
   - stage: build docker image
     script:
    # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker build -t $DOCKER_USERNAME/gato-negro -f Dockerfile.p1 .
+    - docker build -t $DOCKER_USERNAME/gato-negro123 -f Dockerfile.p1 .
     - docker images
-    - docker build -t $DOCKER_USERNAME/gato-negro -f Dockerfile .
-    - docker tag gato-negro $DOCKER_USERNAME/gato-negro
+    - docker build -t $DOCKER_USERNAME/gato-negro123 -f Dockerfile .
+    - docker tag gato-negro123 $DOCKER_USERNAME/gato-negro123
     - docker push "$DOCKER_USERNAME/$HEROKU_APP_NAME
     - heroku container:push web --app $HEROKU_APP_NAME
     - heroku container:release web --app $HEROKU_APP_NAME
