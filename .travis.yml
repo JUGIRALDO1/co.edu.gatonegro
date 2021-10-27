@@ -24,6 +24,6 @@ job:
     - docker images
     - docker build -t $DOCKER_USERNAME/gato-negro123 -f Dockerfile .
     - docker tag gato-negro123 $DOCKER_USERNAME/gato-negro123
-    - docker push "$DOCKER_USERNAME/$HEROKU_APP_NAME
+    - docker push $DOCKER_USERNAME/$HEROKU_APP_NAME
     - heroku container:push web --app $HEROKU_APP_NAME
     - heroku container:release web --app $HEROKU_APP_NAME
