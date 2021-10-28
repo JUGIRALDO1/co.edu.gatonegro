@@ -65,39 +65,35 @@ public class ContactControllerTest {
     @Test
     public void TestPutContactSuccessful() throws Exception {
 
-        /*
-         * //Arrange ContactDTO expectedContact = new ContactDTO(3, "Juan Pablo",
-         * "234","Santuario");
-         * 
-         * String payload= mapper.writeValueAsString(expectedContact);
-         * 
-         * //Act MvcResult response
-         * =this.mockMvc.perform(MockMvcRequestBuilders.put("/contact")
-         * .param("id",String.valueOf(3)) .contentType(MediaType.APPLICATION_JSON)
-         * .content(payload)) .andReturn();
-         * 
-         * ContactDTO responseContact =
-         * mapper.readValue(response.getResponse().getContentAsString(), new
-         * TypeReference<>(){});
-         * 
-         * //Assert
-         * Assertions.assertEquals(HttpStatus.OK.value(),response.getResponse().
-         * getStatus());
-         * Assertions.assertEquals(expectedContact.getName(),responseContact.getName());
-         * }
-         * 
-         * @Test public void TestDeleteContactSuccessful() throws Exception {
-         * 
-         * //Act MvcResult response
-         * =this.mockMvc.perform(MockMvcRequestBuilders.delete("/contact")
-         * .param("id",String.valueOf(1))) .andReturn(); String actualResponse=
-         * response.getResponse().getContentAsString();
-         * 
-         * //Assert
-         * Assertions.assertEquals(HttpStatus.OK.value(),response.getResponse().
-         * getStatus()); Assertions.assertEquals("Deleted",actualResponse);
-         */
-        Assertions.assertTrue(true);
+        // Arrange
+        ContactDTO expectedContact = new ContactDTO(3, "Juan Pablo", "234", "Santuario");
+
+        String payload = mapper.writeValueAsString(expectedContact);
+
+        // Act
+        MvcResult response = this.mockMvc.perform(MockMvcRequestBuilders.put("/contact").param("id", String.valueOf(3))
+                .contentType(MediaType.APPLICATION_JSON).content(payload)).andReturn();
+
+        ContactDTO responseContact = mapper.readValue(response.getResponse().getContentAsString(),
+                new TypeReference<>() {
+                });
+
+        // Assert
+        Assertions.assertEquals(HttpStatus.OK.value(), response.getResponse().getStatus());
+        Assertions.assertEquals(expectedContact.getName(), responseContact.getName());
+    }
+
+    @Test
+    public void TestDeleteContactSuccessful() throws Exception {
+
+        // Act
+        MvcResult response = this.mockMvc
+                .perform(MockMvcRequestBuilders.delete("/contact").param("id", String.valueOf(1))).andReturn();
+        String actualResponse = response.getResponse().getContentAsString();
+
+        // Assert
+        Assertions.assertEquals(HttpStatus.OK.value(), response.getResponse().getStatus());
+        Assertions.assertEquals("Deleted", actualResponse);
 
     }
 
