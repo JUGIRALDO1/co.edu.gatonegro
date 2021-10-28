@@ -69,6 +69,17 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>com.newrelic.agent.java</groupId>
+            <artifactId>newrelic-java</artifactId>
+            <version>7.3.0</version>
+            <scope>provided</scope>
+            <type>zip</type>
+        </dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>RELEASE</version>
@@ -109,8 +120,38 @@
 							${project.build.directory}/${project.build.finalName}.jar</web>
 					</processTypes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>unpack-newrelic</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeGroupIds>com.newrelic.agent.java</includeGroupIds>
+							<includeArtifactIds>newrelic-java</includeArtifactIds>
+							<!-- you can optionally exclude files -->
+							<!-- <excludes>**/newrelic.yml</excludes> -->
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>			
 		</plugins>
 	</build>
-
+	<repositories>
+        <repository>
+            <id>newrelic</id>
+            <name>newrelic</name>
+            <url>http://download.newrelic.com/</url>
+        </repository>
+    </repositories>	
 </project>

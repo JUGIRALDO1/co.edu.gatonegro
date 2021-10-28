@@ -1,4 +1,8 @@
 language: java
+notifications:
+  slack:
+    rooms:
+      - gatonegroespacio:08DQoAvaC2S1kio87I4UQOOB#taller-qa
 services:
   - docker
 before_install:

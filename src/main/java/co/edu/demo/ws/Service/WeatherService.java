@@ -1,6 +1,7 @@
 package co.edu.demo.ws.Service;
 
 import co.edu.demo.ws.rest.Weather;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,11 @@ public class WeatherService {
                 UNIT,
                 API_KEY);
         Weather weatherRoot = restTemplate.getForObject(urlRestWS, Weather.class);        
-        log.info(weatherRoot.toString());
+        String mensaje = "";
+        if (weatherRoot != null){
+            mensaje = weatherRoot.toString();
+        }
+        log.info(mensaje);
         return weatherRoot;
     }
 }
