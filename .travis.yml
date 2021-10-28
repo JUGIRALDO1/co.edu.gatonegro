@@ -20,7 +20,7 @@ job:
   - stage: build docker image
     script:
    # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker build -t $DOCKER_USERNAME/gato-negro123 -f Dockerfile.p1 .
+    - docker build -t $DOCKER_USERNAME/gato-negro123-2 -f Dockerfile.p1 .
     - docker images
     - docker build -t $DOCKER_USERNAME/gato-negro123 -f Dockerfile .
     - docker tag gato-negro123 $DOCKER_USERNAME/gato-negro123
