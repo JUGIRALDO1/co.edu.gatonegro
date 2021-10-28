@@ -3,6 +3,7 @@ notifications:
   slack:
     rooms:
       - gatonegroespacio:08DQoAvaC2S1kio87I4UQOOB#taller-qa
+    on_pull_requests: true
 services:
   - docker
 before_install:
