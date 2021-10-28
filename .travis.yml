@@ -1,8 +1,13 @@
 language: java
 jdk:
   -openjdk11
+notifications:
+  slack:
+    rooms:
+      - gatonegroespacio:08DQoAvaC2S1kio87I4UQOOB#taller-qa
+    on_pull_requests: true
 services:
-- docker
+  - docker
 before_install:
   - chmod +x mvnw
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
