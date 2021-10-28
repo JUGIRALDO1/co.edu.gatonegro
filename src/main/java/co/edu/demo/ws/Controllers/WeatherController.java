@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("weather")
+@RequestMapping("/weather")
 public class WeatherController {
 
     WeatherService weatherService = null;
@@ -31,7 +31,7 @@ public class WeatherController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Retorna los datos del clima JSON"),})
     @RequestMapping(value = "/findByZipAndCountry/{zip}/{country}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<?> findByZipAndCountry(@ApiParam(value = "Zip of the location", required = true) @PathVariable("zip") String zip,
+    public ResponseEntity<Object> findByZipAndCountry(@ApiParam(value = "Zip of the location", required = true) @PathVariable("zip") String zip,
                                                  @ApiParam(value = "Country of the location", required = true) @PathVariable("country") String country
                                                  ) {
         Weather wea = null;
