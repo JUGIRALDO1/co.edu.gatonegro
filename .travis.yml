@@ -13,7 +13,9 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - wget -qO- https://toobelt.heroku.com/install.sh | sh
   #login to docker
-  - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin
+  #- echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin
+  - echo "$HEROKU_PASSWORD" | docker login --username="$HEROKU_USERNAME" --password-stdin
+
 addons:
   sonarcloud:
     organization: d3c184f43c8a925376c733917659019ca8e96c49
@@ -28,6 +30,7 @@ job:
     - docker build -t $DOCKER_USERNAME/gato-negro123 -f Dockerfile.p1 .
     - docker push $DOCKER_USERNAME/gato-negro123
     - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+    
     - docker images
 
     - docker build -t $DOCKER_USERNAME/$HEROKU_APP_NAME -f Dockerfile .    
